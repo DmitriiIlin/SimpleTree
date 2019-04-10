@@ -1,6 +1,7 @@
 """
 Реализация класса Simple Tree
 """
+
 class SimpleTreeNode:
 # Реализация узла дерева
 
@@ -16,7 +17,6 @@ class SimpleTree:
     def __init__(self, root):
         #Инициализация класса SimpleTree
         self.Root=root
-
 
     def AddChild(self, ParentNode, NewChild):
         #Добавление дочернего узла к предыдущему
@@ -39,7 +39,7 @@ class SimpleTree:
                 children_massive=self.Root.Children
                 for children in children_massive:
                     self.Root=children
-                    self.GetAllNodes()
+                    self.GetAllNodes()           
         self.Root=allNodes[0]
         return allNodes
             
@@ -54,7 +54,6 @@ class SimpleTree:
             return output
         else: 
             return None 
-
 
     def Count(self):
         # количество всех узлов в дереве
@@ -85,8 +84,8 @@ class SimpleTree:
     def MoveNode(self, OriginalNode, NewParent):
         # ваш код перемещения узла вместе с его поддеревом -- 
         # в качестве дочернего для узла NewParent
-        all_Nodes=self.GetAllNodes()
-        if NewParent and OriginalNode in all_Nodes:
+        all_Nodes_for_move=self.GetAllNodes()
+        if NewParent and OriginalNode in all_Nodes_for_move:
             if NewParent==OriginalNode.Parent:
                 pass
             elif NewParent!=OriginalNode.Parent:
@@ -94,19 +93,10 @@ class SimpleTree:
                 old_Parent.Children.remove(OriginalNode)
                 OriginalNode.Parent=NewParent
                 NewParent.Children.append(OriginalNode)
-        elif OriginalNode in all_Nodes and NewParent==None:
-            old_Parent=OriginalNode.Parent
-            print(old_Parent.Children)
-            old_Parent.Children.remove(OriginalNode)
-            print(old_Parent.Children)
-            OriginalNode.Parent=None
-            self.Root=OriginalNode
-            print(self.GetAllNodes())
+        elif OriginalNode in all_Nodes_for_move and NewParent==None:
+            pass
         else:
             pass
-
-            
-
 
     def LeafCount(self):
         # количество листьев в дереве
@@ -119,8 +109,8 @@ class SimpleTree:
                 pass
         return all_leaf
 
-      
-
+    
+"""
 A=SimpleTreeNode(1,None)
 B=SimpleTreeNode(2,None)
 D=SimpleTreeNode(3,None)
@@ -128,33 +118,23 @@ C=SimpleTreeNode(4,None)
 F=SimpleTreeNode(5,None)
 Tree=SimpleTree(A)
 Tree.AddChild(A,B)
-Tree.AddChild(B,D)
+Tree.AddChild(A,D)
 Tree.AddChild(B,C)
 Tree.AddChild(C,F)
-E=SimpleTreeNode(10,None)
-R=SimpleTreeNode(20,None)
-Tree.AddChild(F,E)
-Tree.AddChild(F,R)
 AA=A.Children
+print(AA)
 BB=B.Children
 DD=D.Children
 CC=C.Children
 FF=F.Children
-EE=E.Children
-RR=R.Children
 Root=Tree.Root
-Tree.MoveNode(F,None)
+print(Tree.Count())
+Tree.MoveNode(F,A)
+print(Tree.Count())
 print("*********")
-print(A.Children==AA)
-print(B.Children==BB)
-print(D.Children==DD)
-print(C.Children==CC)
-print(F.Children==FF)
-print(E.Children==EE)
-print(R.Children==RR)
+print(A.Children)
 print("*********")
-print(Root==Tree.Root)
-
+"""
             
 
 
