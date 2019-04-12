@@ -72,13 +72,20 @@ class SimpleTree:
         # ваш код удаления существующего узла NodeToDelete
         if NodeToDelete!=None:
             Nodes_in_Tree=self.GetAllNodes()
+            print(self.GetAllNodes())
             if NodeToDelete in Nodes_in_Tree:
                 Parent_Node=NodeToDelete.Parent
+                Parent_Node_Children=Parent_Node.Children
+                for i in range(0,len(Parent_Node_Children)):
+                    if Parent_Node_Children[i]==NodeToDelete:
+                        number_to_delete=i
+                Parent_Node_Children.pop(number_to_delete)
                 Children=NodeToDelete.Children
                 for everynode in Children:
                     everynode.Parent=Parent_Node
+                NodeToDelete.NodeValue=None
         elif NodeToDelete==self.Root:
-            self.Root=None 
+            pass
 
 
     def MoveNode(self, OriginalNode, NewParent):
@@ -107,10 +114,10 @@ class SimpleTree:
                 all_leaf.append(everynode)
             else:
                 pass
-        return all_leaf
+        
+        return len(all_leaf)
 
-    
-"""
+"""    
 A=SimpleTreeNode(1,None)
 B=SimpleTreeNode(2,None)
 D=SimpleTreeNode(3,None)
@@ -121,23 +128,24 @@ Tree.AddChild(A,B)
 Tree.AddChild(A,D)
 Tree.AddChild(B,C)
 Tree.AddChild(C,F)
-AA=A.Children
-print(AA)
-BB=B.Children
-DD=D.Children
-CC=C.Children
-FF=F.Children
-Root=Tree.Root
-print(Tree.Count())
+for node in Tree.GetAllNodes():
+    print(node.NodeValue," ",node.Children)
+print("количество листьев",Tree.LeafCount())
 Tree.MoveNode(F,A)
-print(Tree.Count())
+for node in Tree.GetAllNodes():
+    print(node.NodeValue," ",node.Children)
+Tree.DeleteNode(B)
 print("*********")
-print(A.Children)
+print(Tree.GetAllNodes())
 print("*********")
+for node in Tree.GetAllNodes():
+    print(node.NodeValue," ",node.Children)
+       
+Tree2=SimpleTree(B)
+Z=[Tree,Tree2]
+print(Z)
+Z.remove(Tree)
+print(Z)
 """
-            
-
-
-
 
 
