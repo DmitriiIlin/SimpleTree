@@ -120,41 +120,4 @@ class SimpleTree:
                 all_leaf.append(everynode)
             else:
                 pass
-        
         return len(all_leaf)
-
- """   
-A=SimpleTreeNode(11,None)
-B=SimpleTreeNode(22,None)
-D=SimpleTreeNode(33,None)
-C=SimpleTreeNode(44,None)
-F=SimpleTreeNode(55,None)
-G=SimpleTreeNode(99,None)
-Tree=SimpleTree(A)
-Tree.AddChild(A,B)
-Tree.AddChild(A,D)
-Tree.AddChild(B,C)
-Tree.AddChild(C,F)
-Tree.AddChild(F,G)
-print(Tree.GetAllNodes())
-for node in Tree.GetAllNodes():
-    print(node,node.NodeValue," ",node.Children)
-print(Tree.Count())
-print(Tree.LeafCount())
-Tree.DeleteNode(B)
-print("*********")
-print("*********")
-for node in Tree.GetAllNodes():
-    print(node,node.NodeValue," ",node.Children)
-print(Tree.Count())
-Tree.MoveNode(F,A)
-print(Tree.LeafCount())
-print("*********")
-print("*********")
-for node in Tree.GetAllNodes():
-    print(node,node.NodeValue," ",node.Children)
-print(Tree.Count())
-print(Tree.LeafCount())
-print(Tree.FindNodesByValue(100))
-print(Tree.FindNodesByValue(99))
-"""
