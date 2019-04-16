@@ -123,7 +123,7 @@ class SimpleTree:
         
         return len(all_leaf)
 
-    
+ """   
 A=SimpleTreeNode(11,None)
 B=SimpleTreeNode(22,None)
 D=SimpleTreeNode(33,None)
@@ -157,3 +157,4 @@ print(Tree.Count())
 print(Tree.LeafCount())
 print(Tree.FindNodesByValue(100))
 print(Tree.FindNodesByValue(99))
+"""
