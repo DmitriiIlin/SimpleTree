@@ -74,14 +74,18 @@ class SimpleTree:
         
     def DeleteNode(self, NodeToDelete):
         # ваш код удаления существующего узла NodeToDelete
-        if NodeToDelete!=None:
+        if NodeToDelete!=None and NodeToDelete!=self.Root:
             Nodes_in_Tree=self.GetAllNodes()
             if NodeToDelete in Nodes_in_Tree:
                 Parent_Node=NodeToDelete.Parent
                 Parent_Node_Children=Parent_Node.Children
-                for i in range(0,len(Parent_Node_Children)-1):
+                i=0
+                q_ty=len(Parent_Node_Children)
+                while i<q_ty:
                     if Parent_Node_Children[i]==NodeToDelete:
                         Parent_Node_Children.remove(NodeToDelete)
+                        break
+                    i+=1
                 Parent_Node.Children=Parent_Node_Children
                 Children=NodeToDelete.Children
                 for everynode in Children:
@@ -90,7 +94,7 @@ class SimpleTree:
                 NodeToDelete.Parent=None
                 NodeToDelete.Children=None
                 NodeToDelete.NodeValue=None
-        elif NodeToDelete==self.Root:
+        elif NodeToDelete==self.Root or NodeToDelete==None:
             pass
 
 
@@ -121,3 +125,23 @@ class SimpleTree:
             else:
                 pass
         return len(all_leaf)
+
+"""A=SimpleTreeNode(11,None)
+B=SimpleTreeNode(22,None)
+D=SimpleTreeNode(33,None)
+C=SimpleTreeNode(44,None)
+F=SimpleTreeNode(55,None)
+G=SimpleTreeNode(99,None)
+Tree=SimpleTree(A)
+Tree.AddChild(A,B)
+Tree.AddChild(A,D)
+Tree.AddChild(B,C)
+Tree.AddChild(C,F)
+Tree.AddChild(F,G)
+print(Tree.GetAllNodes())
+print(Tree.Count())
+Tree.Print_all_Nodes()
+Tree.DeleteNode(B)
+print(Tree.GetAllNodes())
+print(Tree.Count())
+Tree.Print_all_Nodes()"""
